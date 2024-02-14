@@ -16,7 +16,7 @@ struct ContentView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             WebView(
-                request: URLRequest(url: URL(string: "https://skatemap.kr/skatemap2.0.html")!),
+                request: URLRequest(url: URL(string: "https://oldjeans.io/skatemap2.0.html")!),
                 showAlert: self.$showAlert,
                 alertMessage: self.$alertMessage
             )
