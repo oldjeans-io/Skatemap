@@ -83,9 +83,17 @@ struct WebView: UIViewRepresentable {
             initiatedByFrame frame: WKFrameInfo,
             completionHandler: @escaping () -> Void
         ) {
-            self.alertMessage.wrappedValue = message
-            self.showAlert.wrappedValue.toggle()
-            completionHandler()
+            if message == "hapticFeedback" {
+                // Call haptic feedback
+                let generator = UIImpactFeedbackGenerator(style: .medium)
+                generator.impactOccurred()
+                completionHandler()
+            } else {
+                // Handle other JavaScript alerts
+                self.alertMessage.wrappedValue = message
+                self.showAlert.wrappedValue.toggle()
+                completionHandler()
+            }
         }
 
         func webView(
